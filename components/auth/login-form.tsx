@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import FormError from '@/components/form-error'
 import FormSuccess from '@/components/form-success'
 import { login } from '@/actions/login'
+import { useSearchParams } from 'next/navigation'
 
 type Props = {}
 
@@ -19,6 +20,9 @@ const LoginForm = (props: Props) => {
   const [error, setError] = useState<string | undefined>("")
   const [success, setSuccess] = useState<string | undefined>("")
   const [isPending, startTransition] = useTransition() //automatically changes state on revalidatePath with server action
+
+  const searchParams = useSearchParams()
+  const urlError = searchParams.get('error') === "OAuthAccountNotLinked" ? "Email in use with different provider" : undefined
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -89,7 +93,7 @@ const LoginForm = (props: Props) => {
             >
             </FormField>
           </div>
-          <FormError message={error} />
+          <FormError message={error || urlError} />
           <FormSuccess message={success} />
           <Button
             disabled={isPending}

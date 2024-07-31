@@ -18,7 +18,7 @@ const CardWrapper = ({
   headerLabel,
   backButtonLabel,
   backButtonhref,
-  showSocial = true,
+  showSocial = false,
 }: Props) => {
 
   return (
