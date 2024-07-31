@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useTransition } from 'react'
+import { useState, useTransition } from 'react'
 import CardWrapper from './card-wrapper'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
@@ -44,7 +44,7 @@ const RegisterForm = (props: Props) => {
   return (
     <CardWrapper
       headerLabel='Create an account'
-      backButtonLabel="Alreadt have an account?"
+      backButtonLabel="Already have an account?"
       backButtonhref='/auth/login'
       showSocial
     >

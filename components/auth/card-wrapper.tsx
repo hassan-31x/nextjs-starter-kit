@@ -1,6 +1,5 @@
 "use client"
 
-import React from 'react'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import AuthHeader from './header';
 import AuthSocial from './social';
@@ -21,6 +20,7 @@ const CardWrapper = ({
   backButtonhref,
   showSocial = true,
 }: Props) => {
+
   return (
     <Card className='w-[400px] shadow-md'>
       <CardHeader>
@@ -35,7 +35,7 @@ const CardWrapper = ({
         </CardFooter>
       )}
       <CardFooter>
-        <BackButton label="Don't have an account?" href='/auth/register' />
+        <BackButton label={backButtonLabel} href={backButtonhref} />
       </CardFooter>
     </Card>
   )
