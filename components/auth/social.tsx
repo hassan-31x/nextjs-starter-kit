@@ -8,6 +8,8 @@ import { FaGithub } from 'react-icons/fa'
 type Props = {}
 
 const AuthSocial = (props: Props) => {
+  
+
   return (
     <div className='flex items-center w-full gap-x-2'>
       <Button
