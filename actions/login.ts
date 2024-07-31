@@ -32,9 +32,9 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       }
     }
 
-    // throw error;
+    throw error;
   }
 
 
-  return { success: "Email sent" }
+  return { success: "Login Successful" }
 }
