@@ -7,7 +7,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
 
   await resend.emails.send({
     from: process.env.FROM_EMAIL!,
-    to: email,
+    to: email, // can only be sent to registered email on resend for now
     subject: "Confirm your email",
     html: `<p>Click <a href="${confirmLink}">here</a> to confirm your email.</p>`,
   })
