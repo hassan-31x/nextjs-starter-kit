@@ -3,10 +3,9 @@
 import { useSession } from "next-auth/react";
 
 const ClientPage = () => {
-  const session = useSession();
-  const user = session?.data;
+  const { data: session } = useSession();
   
-  return <div>{JSON.stringify(user)}</div>;
+  return <div>{JSON.stringify(session?.user)}</div>;
 };
 
 export default ClientPage;

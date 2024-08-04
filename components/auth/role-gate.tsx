@@ -2,7 +2,7 @@
 
 import { UserRole } from "@prisma/client";
 import { useSession } from "next-auth/react";
-import FormError from "../form-error";
+import FormError from "@/components/form-error";
 
 type Props = {
   children: React.ReactNode;
