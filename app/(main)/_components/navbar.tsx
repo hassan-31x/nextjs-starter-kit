@@ -17,11 +17,8 @@ const Navbar = () => {
         <Button asChild variant={pathname.startsWith("/client") ? "default" : "outline"}>
           <Link href="/client">Client</Link>
         </Button>
-        <Button asChild variant={pathname.startsWith("/admin") ? "default" : "outline"}>
-          <Link href="/admin">Admin</Link>
-        </Button>
-        <Button asChild variant={pathname.startsWith("/dashboard") ? "default" : "outline"}>
-          <Link href="/dashboard">Dashboard</Link>
+        <Button asChild variant={pathname.startsWith("/settings") ? "default" : "outline"}>
+          <Link href="/settings">Settings</Link>
         </Button>
       </div>
       <UserButton />
