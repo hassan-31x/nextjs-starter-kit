@@ -19,6 +19,7 @@ export default {
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
+    //magin links: https://authjs.dev/guides/configuring-resend#registering-your-app
     Credentials({
       async authorize(credentials) {
         const validatedFields = LoginSchema.safeParse(credentials)
