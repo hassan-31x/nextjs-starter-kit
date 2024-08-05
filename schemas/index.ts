@@ -33,3 +33,11 @@ export const NewPasswordSchema = z.object({
     message: "Password must be at least 6 characters",
   }),
 });
+
+export const SettingsSchema = z.object({
+  name: z.optional(z.string()),
+  email: z.optional(z.string().email()),
+  password: z.optional(z.string().min(6)),
+  isTwoFactorEnabled: z.optional(z.boolean())
+  // add other fields you want to update
+})
