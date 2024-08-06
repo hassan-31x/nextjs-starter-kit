@@ -69,7 +69,7 @@ model ResetPasswordToken {
   @@unique([email, token])
 }
 
-model twoFactorToken {
+model TwoFactorToken {
   id      String   @id @default(cuid())
   email   String
   token   String   @unique
