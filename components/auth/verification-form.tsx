@@ -14,11 +14,12 @@ type Props = {}
 const VerificationForm = (props: Props) => {
   const [error, setError] = useState<string | undefined>("")
   const [success, setSuccess] = useState<string | undefined>("")
+  const [requestSent, setRequestSent] = useState<boolean>(false) //to prevent useEffect from running twice in dev mode
 
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
 
-  const handleSubmit = useCallback(() => {
+  const verifyToken = useCallback(() => {
     if (!token) {
       setError("Token missing")
       return
@@ -35,8 +36,12 @@ const VerificationForm = (props: Props) => {
   }, [token])
 
   useEffect(() => {
-    handleSubmit()
+    if (!requestSent) {
+      setRequestSent(true)
+      verifyToken()
+    }
   }, [])
+
   return (
     <CardWrapper
       headerLabel="Confirm your email"
