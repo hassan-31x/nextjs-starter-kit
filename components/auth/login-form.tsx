@@ -44,6 +44,7 @@ const LoginForm = (props: Props) => {
     defaultValues: {
       email: "",
       password: "",
+      code: ""
     },
   });
 
@@ -54,17 +55,17 @@ const LoginForm = (props: Props) => {
     startTransition(() => {
       login(values)
         .then((data) => {
-          if (data.error) {
+          if (data?.error) {
             form.reset();
             setError(data.error);
           }
 
-          if (data.success) {
+          if (data?.success) {
             form.reset();
             setSuccess(data.success);
           }
 
-          if (data.twoFactor) {
+          if (data?.twoFactor) {
             setShowTwoFactor(true);
           }
         })
@@ -77,7 +78,7 @@ const LoginForm = (props: Props) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
-            {showTwoFactor ? (
+            {showTwoFactor && (
               <FormField
                 control={form.control}
                 name="code"
@@ -86,7 +87,7 @@ const LoginForm = (props: Props) => {
                     <FormLabel>Two Factor Code</FormLabel>
                     <FormControl>
                       {/* <Input {...field} disabled={isPending} type="text" placeholder="123456" /> */}
-                      <InputOTP maxLength={6} {...field} disabled={isPending}>
+                      <InputOTP maxLength={6} value={field.value} onChange={field.onChange} disabled={isPending}>
                         <InputOTPGroup>
                           <InputOTPSlot index={0} />
                           <InputOTPSlot index={1} />
@@ -104,8 +105,8 @@ const LoginForm = (props: Props) => {
                   </FormItem>
                 )}
               ></FormField>
-              
-            ) : (
+            )}
+            {!showTwoFactor && (
               <>
                 <FormField
                   control={form.control}

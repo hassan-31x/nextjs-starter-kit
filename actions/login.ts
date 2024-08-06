@@ -2,7 +2,7 @@
 
 import { signIn } from "@/auth"
 import { db } from "@/lib/db"
-import { sendTwoFactorEmail } from "@/lib/mail"
+import { sendTwoFactorEmail, sendVerificationEmail } from "@/lib/mail"
 import { generateTwoFactorToken, generateVerificationToken } from "@/lib/tokens"
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes"
 import { LoginSchema } from "@/schemas"
@@ -29,10 +29,10 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 
   if (!existingUser.emailVerified) {
     const verificationToken = await generateVerificationToken(email)
+    await sendVerificationEmail(email, verificationToken.token)
 
     return { success: "Confirmation email sent" }
   }
-
   if (existingUser.isTwoFactorEnabled && existingUser.email) {
     if (code) {
       const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email)
@@ -90,7 +90,6 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 
     throw error;
   }
-
 
   return { success: "Login Successful" }
 }
