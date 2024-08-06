@@ -1,3 +1,5 @@
+"use server"
+
 import * as z from "zod"
 
 import { auth } from "@/auth"

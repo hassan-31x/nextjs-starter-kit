@@ -82,8 +82,9 @@ const SettingsPage = () => {
                         <FormDescription>Enable two factor authentication for your account</FormDescription>
                       </div>
                       <FormControl>
-                        <Switch checked={field.value} onChange={field.onChange} disabled={isPending} />
+                        <Switch checked={field.value} onCheckedChange={field.onChange} disabled={isPending} />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 ></FormField>
