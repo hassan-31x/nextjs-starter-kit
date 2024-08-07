@@ -7,7 +7,7 @@ export default function Home() {
       <h1 className="text-6xl font-semibold text-black drop-shadow-md">
         Auth
       </h1>
-      <LoginButton>
+      <LoginButton mode="redirect" >
         <Button variant='secondary' size='lg'>
           Sign in
         </Button>

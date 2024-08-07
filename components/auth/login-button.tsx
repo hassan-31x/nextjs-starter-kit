@@ -1,6 +1,15 @@
 "use client"
 
 import { useRouter } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import LoginForm from "@/components/auth/login-form";
 
 type Props = {
   children: React.ReactNode;
@@ -21,7 +30,12 @@ const LoginButton = ({
 
   if (mode === "modal") {
     return (
-      <span>MODAL</span>
+      <Dialog>
+        <DialogTrigger>{children}</DialogTrigger>
+        <DialogContent hideClose={true} className="p-0 w-max rounded-xl">
+          <LoginForm />
+        </DialogContent>
+      </Dialog>
     )
   }
 
